@@ -1,0 +1,59 @@
+# Throwaway board smoke test (not Humber RTL). See smoke_top.sv for what to
+# look for on the board. Run on Windows, from syn/smoke in the Windows clone:
+#   quartus_sh --flow compile smoke
+#   jtagconfig                                        (expect 2 devices: SOCVHPS, 5CSEMA5)
+#   quartus_pgm -m jtag -o "p;output_files/smoke.sof@2"
+# The FPGA is device 2 in the DE1-SoC JTAG chain; device 1 is the HPS.
+# Pin numbers: Terasic DE1-SoC User Manual, pin assignment tables.
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY smoke_top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name SYSTEMVERILOG_FILE smoke_top.sv
+set_global_assignment -name SDC_FILE smoke.sdc
+
+# 50 MHz clock
+set_location_assignment PIN_AF14 -to CLOCK_50
+
+# Push button (active low)
+set_location_assignment PIN_AA14 -to KEY[0]
+
+# Slide switches
+set_location_assignment PIN_AB12 -to SW[0]
+set_location_assignment PIN_AC12 -to SW[1]
+set_location_assignment PIN_AF9  -to SW[2]
+set_location_assignment PIN_AF10 -to SW[3]
+set_location_assignment PIN_AD11 -to SW[4]
+set_location_assignment PIN_AD12 -to SW[5]
+set_location_assignment PIN_AE11 -to SW[6]
+set_location_assignment PIN_AC9  -to SW[7]
+set_location_assignment PIN_AD10 -to SW[8]
+
+# Red LEDs
+set_location_assignment PIN_V16 -to LEDR[0]
+set_location_assignment PIN_W16 -to LEDR[1]
+set_location_assignment PIN_V17 -to LEDR[2]
+set_location_assignment PIN_V18 -to LEDR[3]
+set_location_assignment PIN_W17 -to LEDR[4]
+set_location_assignment PIN_W19 -to LEDR[5]
+set_location_assignment PIN_Y19 -to LEDR[6]
+set_location_assignment PIN_W20 -to LEDR[7]
+set_location_assignment PIN_W21 -to LEDR[8]
+set_location_assignment PIN_Y21 -to LEDR[9]
+
+# Seven-segment HEX0 (active low)
+set_location_assignment PIN_AE26 -to HEX0[0]
+set_location_assignment PIN_AE27 -to HEX0[1]
+set_location_assignment PIN_AE28 -to HEX0[2]
+set_location_assignment PIN_AG27 -to HEX0[3]
+set_location_assignment PIN_AF28 -to HEX0[4]
+set_location_assignment PIN_AG28 -to HEX0[5]
+set_location_assignment PIN_AH28 -to HEX0[6]
+
+# All of the above are on 3.3 V banks
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[*]
