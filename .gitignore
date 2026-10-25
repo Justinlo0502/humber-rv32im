@@ -1,0 +1,47 @@
+# Simulation / build output
+build/
+obj_dir/
+*.vcd
+*.fst
+*.fsdb
+*.log
+
+# Formal output
+*_sby/
+*.vcd.gz
+
+# Software build output
+*.o
+*.elf
+*.bin
+*.hex
+*.dump
+
+# Quartus (build runs on Windows in a separate clone)
+db/
+incremental_db/
+output_files/
+qdb/
+.qsys_edit/
+*.sof
+*.rbf
+*.qws
+*.rpt
+*.smsg
+*.summary
+*.jdi
+*.pin
+*.done
+*.sopcinfo
+*.qpf.bak
+*.qsf.bak
+*.qsys.bak
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor / OS
+.vscode/
+.DS_Store

@@ -285,15 +285,19 @@ Study these for structure and ideas. Don't copy code: I need to own and explain 
 **Suggested repo layout:**
 
 ```
-rtl/core/       pipeline, ALU, mul/div, CSRs
-rtl/cache/      L1 I/D caches, miss handling, reservation logic
-rtl/coherence/  bus, arbiter, snoop logic, protocol FSMs
-rtl/soc/        two-core top, shared memory, console, counters
-tb/             unit tests, Spike lockstep harness, multicore stress tests
-formal/         riscv-formal config; coherence properties (SWMR, data-value)
+src/core/       pipeline, ALU, mul/div, CSRs
+src/cache/      L1 I/D caches, miss handling, reservation logic
+src/coherence/  bus, arbiter, snoop logic, protocol FSMs
+src/soc/        shared memory, console, counters
+src/top/        two-core top level
+sim/            Verilator testbenches, unit tests, run scripts, Spike lockstep
+                harness, multicore stress tests
+verification/   riscv-formal config; coherence properties (SWMR, data-value);
+                litmus tests; coverage
 sw/             crt0 with mhartid dispatch, linker script, tests, CoreMark,
                 litmus harness, parallel workloads, lock benchmarks
-fpga/de1soc/    Quartus project, Platform Designer system, HPS loader
+syn/            Quartus project, .qsf/.sdc, Platform Designer system, HPS loader,
+                DE1-SoC pin assignments
 tools/          mutation testing, litmus outcome comparison, per-address checker
 docs/           spec, protocol diagrams, decisions log, results, write-up
 .github/        CI workflows

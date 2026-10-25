@@ -31,7 +31,11 @@ Stage 0 (setup and spec). Update this line at every stopping point.
 - Generated files never get committed (see .gitignore).
 
 ## Layout
-rtl/{core,cache,coherence,soc}  tb/  formal/  sw/  fpga/de1soc/  tools/  docs/
+Modeled on the public OFS layout (github.com/OFS/ofs-agx5-pcie-attach).
+src/{core,cache,coherence,soc,top}  sim/  verification/  syn/  sw/  tools/  docs/
+- src: RTL. sim: Verilator testbenches, unit tests, run scripts, Spike lockstep.
+- verification: formal (SymbiYosys, riscv-formal), litmus tests, coverage.
+- syn: Quartus project, .qsf/.sdc, DE1-SoC pin assignments.
 One module per file; filename matches module name.
 
 ## Commands
