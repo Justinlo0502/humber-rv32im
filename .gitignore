@@ -45,3 +45,6 @@ __pycache__/
 # Editor / OS
 .vscode/
 .DS_Store
+
+# archify diagram output (generated)
+.archify/
