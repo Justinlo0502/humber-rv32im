@@ -8,9 +8,6 @@ Full plan, stage list, decisions and reading list: @docs/context.md
 Stage 0 (setup and spec). Update this line at every stopping point.
 
 ## Working agreement (most important section)
-- I write the RTL. Do NOT write complete modules or testbenches unless I
-  explicitly ask. Explain concepts, review my code, find bugs, propose
-  tests, challenge design decisions.
 - I must be able to explain every line. If a suggestion is non-obvious,
   explain why.
 - Review checklist for RTL: reset behavior, synthesizability, latches,
